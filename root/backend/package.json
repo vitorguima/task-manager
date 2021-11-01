@@ -1,0 +1,32 @@
+{
+  "name": "task-manager",
+  "version": "1.0.0",
+  "description": "manage your tasks and keep your producity on track.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .eslintrc.json ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vitorguima/task-manager.git"
+  },
+  "keywords": [
+    "task",
+    "manager"
+  ],
+  "author": "vitorguima",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vitorguima/task-manager/issues"
+  },
+  "homepage": "https://github.com/vitorguima/task-manager#readme",
+  "dependencies": {
+    "eslint": "^6.8.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint-config-trybe-backend": "^1.0.4",
+    "nodemon": "^2.0.14"
+  }
+}
