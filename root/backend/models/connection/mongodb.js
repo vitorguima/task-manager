@@ -1,12 +1,14 @@
 const { MongoClient } = require('mongodb');
 
+require('dotenv').config();
+
 const OPTIONS = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 };
 
-const MONGO_DB_URL = 'mongodb://localhost:27017/';
-const DATABASE_NAME = 'tasks-manager';
+const MONGO_DB_URL = process.env.MONGO_DB_URL;
+const DATABASE_NAME = process.env.DATABASE_NAME;
 
 let db = null;
 
