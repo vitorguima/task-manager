@@ -1,14 +1,20 @@
-const connection = require('../../models/connection/mongodb');
+const create = require('../../services/users/createUser');
 
-const createUser = async (data) => {
-  try {
-    const newUser = await connection()
-      .then((db) => db.collection('users').insertOne({ ...data, role: 'user' }));
+const createUser = async (req, res, _next) => {
+  const {
+    password,
+    name,
+    lastName,
+    email,
+  } = req.body;
 
-    return newUser;
-  } catch (_err) {
-    return null;
+  const newUser = await create.createUser({ password, name, lastName, email });
+
+  if (newUser) {
+    return res.status(200).json(newUser);
   }
+
+  return res.status(400).json({ message: 'fail' });
 }
 
 module.exports = createUser;
