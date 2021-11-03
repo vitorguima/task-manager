@@ -18,7 +18,10 @@ require('dotenv').config();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());  
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true,
+}));  
 
 const sessionStore = new MongoStore({
   mongoConnection: connection,
@@ -44,4 +47,6 @@ app.use(passport.session());
 app.use(register);
 app.use(authentication);
 
-app.listen(3000);
+app.listen(4000, () => {
+  console.log("Running on PORT 4000.");
+});

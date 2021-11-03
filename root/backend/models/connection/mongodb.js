@@ -9,6 +9,8 @@ const OPTIONS = {
 
 const MONGO_DB_URL = process.env.MONGO_DB_URL;
 const DATABASE_NAME = process.env.DATABASE_NAME;
+// const PRODUCTION_DB_URL = process.env.PRODUCTION_DB_URL;
+// const PRODUCTION_DB_NAME = process.env.PRODUCTION_DB_NAME;
 
 let db = null;
 

@@ -1,4 +1,5 @@
 const connection = require('../../models/connection/mongodb');
+const { ObjectId } = require('mongodb');
 
 const findByUserName = async (username) => {
   try {
@@ -18,7 +19,7 @@ const findById = async (id) => {
   try {
     const user = await connection()
       .then((db) => db.collection('users')
-      .findOne({ id: { $eq: id } }));
+      .findOne({ _id: { $eq: ObjectId(id) } }));
 
     return user;
   } catch (_err) {

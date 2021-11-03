@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const REGISTER_ENDPOINT = 'http://localhost:3000/register'
+const REGISTER_ENDPOINT = 'http://localhost:4000/register'
 
 const submitRegister = async (userName, password, firstName, lastName, email) => {
-  const response = await axios.post(REGISTER_ENDPOINT, {
-    userName,
-    password,
-    firstName,
-    lastName,
-    email,
+  const response = await axios({
+    method: 'POST',
+    data: {
+      userName,
+      password,
+      firstName,
+      lastName,
+      email,
+    },
+    withCredentials: true,
+    url: REGISTER_ENDPOINT,
   })
   .then((response) => console.log(response));
 

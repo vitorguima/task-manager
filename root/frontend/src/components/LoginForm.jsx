@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const LOGIN_ENDPOINT = 'http://localhost:3000/login'
+const LOGIN_ENDPOINT = 'http://localhost:4000/login'
 
 const submitLogin = async (userName, password) => {
-  const response = await axios.post(LOGIN_ENDPOINT, {
-    userName,
-    password,
+  const response = await axios({
+    method: 'POST',
+    data: {
+      userName,
+      password,
+    },
+    withCredentials: true,
+    url: LOGIN_ENDPOINT,
   })
   .then((response) => console.log(response));
 
