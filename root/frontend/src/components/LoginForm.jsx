@@ -4,11 +4,13 @@ import axios from 'axios';
 const LOGIN_ENDPOINT = 'http://localhost:3000/login'
 
 const submitLogin = async (userName, password) => {
-  await axios.post(LOGIN_ENDPOINT, {
+  const response = await axios.post(LOGIN_ENDPOINT, {
     userName,
     password,
   })
   .then((response) => console.log(response));
+
+  return response;
 }
 
 export default function LoginForm() {
@@ -36,7 +38,7 @@ export default function LoginForm() {
         </label>
       </form>
       <button
-        onSubmit={ () => submitLogin(userName, password) }
+        onClick={ () => submitLogin(userName, password) }
       >
         Login
       </button>
