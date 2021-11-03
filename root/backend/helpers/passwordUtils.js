@@ -1,9 +1,9 @@
 const bcrypt = require('bcrypt');
 
-const validPassword = async (password, hashedPassword) => {
-  const encodedPassword = await bcrypt.hash(password, 10);
-
-  return encodedPassword === hashedPassword;
+const validPassword = (password, hashedPassword) => {
+  const verified = bcrypt.compareSync(password, hashedPassword);
+  console.log(verified);
+  return verified;
 }
 
 module.exports = {
