@@ -1,8 +1,8 @@
 const router = require('express').Router();
 
-const createUser = require('../../controllers/users/createUser');
+const passport = require('passport');
 
 router.post('/register',
-  createUser);
+  passport.authenticate('local'));
 
 module.exports = router;

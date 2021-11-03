@@ -6,8 +6,9 @@ const currentDate = Date.now();
 
 const createUser = async (data) => {
   const {
+    userName,
     password,
-    name,
+    firstName,
     lastName,
     email,
   } = data;
@@ -17,11 +18,12 @@ const createUser = async (data) => {
 
     const newUserData = {
       hashedPassword,
-      name,
+      firstName,
       lastName,
       email,
       currentDate,
       role: 'user',
+      userName,
     };
   
     const newUser = await create.createUser(newUserData);
