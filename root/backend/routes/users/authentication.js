@@ -1,18 +1,23 @@
 const router = require('express').Router();
 
-const passport = require('passport');
+const {
+  validateSession,
+  getUser,
+} = require('../../middlewares/sessions/validateSession');
 
-router.post('/login', (req, res, next) => {
-  passport.authenticate('local', (err, user, _info) => {
-    if (err) throw err;
-    if (!user) res.send('No User Exists');
-    else {
-      req.logIn(user, (err) => {
-        if (err) throw err;
-        res.send('Successfully Authenticated');
-      });
-    }
-  })(req, res, next);
-});
+const {
+  startSession,
+  endSession,
+} = require('../../middlewares/sessions/defineSessionStatus');
+
+router.post('/login',
+  startSession);
+
+router.get('/user',
+  validateSession,
+  getUser);
+
+router.get('/logout',
+  endSession);
 
 module.exports = router;
