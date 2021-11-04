@@ -61,7 +61,7 @@ function LoginForm({ userData, setUserData }) {
   
   return (
     <div>
-      { redirect ? <Redirect to={`/tasks/${userData.id}`} /> : null }
+      { redirect ? <Redirect to={`/projects/${userData.id}`} /> : null }
       { !isloading ?
         <div>
           <form>

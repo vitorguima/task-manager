@@ -4,8 +4,8 @@ import { Route, Switch } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Register from './pages/Register';
-import ProjectsFeed from './pages/ProjectsFeed';
 import ProjectDetails from './pages/ProjectDetails';
+import ProjectsFeed from './pages/ProjectsFeed';
 
 function Routes() {
   return (

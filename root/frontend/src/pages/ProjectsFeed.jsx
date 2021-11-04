@@ -23,4 +23,4 @@ const mapStateToProps = (state) => ({
   userData: state.userData.userData,
 });
 
-export default connect(mapStateToProps, null)(ProjectsFeed)
+export default connect(mapStateToProps)(ProjectsFeed)
