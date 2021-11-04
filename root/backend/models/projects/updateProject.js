@@ -1,13 +1,13 @@
 const connection = require('../../models/connection/mongodb');
 const { ObjectId } = require('mongodb');
 
-const findById = async (projectId) => {
+const updateById = async (projectId) => {
   try {
     const project = await connection()
-      .then((db) => db.collection('projects')
-      .findOne({ _id: { $eq: ObjectId(projectId) } }));
+    .then((db) => db.collection('projects')
+    .updateOne({ _id: { $eq: ObjectId(projectId) } }, { $set: { ...data } }));
 
-    return project;
+  return project;
   } catch (_err) {
     return {
       message: 'No projects found. Check the projectId',
@@ -16,5 +16,5 @@ const findById = async (projectId) => {
 }
 
 module.exports = {
-  findById,
-};
+  updateById,
+}

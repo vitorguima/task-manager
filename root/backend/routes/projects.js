@@ -4,6 +4,7 @@ const { validateSession } = require('../middlewares/sessions/validateSession');
 const { getAllProjects } = require('../controllers/projects/getProjects');
 const { createProject } = require('../controllers/projects/createProject');
 const { findProjectById } = require('../controllers/projects/getProjectById');
+const { updateProjectById } = require('../controllers/projects/updateProject');
 
 // return all projects based on an an especific userId
 router.get('/projects',
@@ -17,5 +18,9 @@ router.post('/projects',
 router.get('/projects/:projectId',
   validateSession,
   findProjectById);
+
+router.put('/projects/:projectId',
+  validateSession,
+  updateProjectById)
 
 module.exports = router;
