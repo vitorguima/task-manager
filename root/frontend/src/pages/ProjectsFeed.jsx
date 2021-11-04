@@ -6,6 +6,10 @@ import { connect } from 'react-redux';
 
 import LogoutButton from '../components/LogoutButton';
 
+// render the project cards (arrayOfTasks.map())
+// each task card will have a button to redirect to TasksOfProject
+// tasksCard will contain the details of a registered task
+
 function ProjectsFeed({ userData }) {
   return (
     <div>
