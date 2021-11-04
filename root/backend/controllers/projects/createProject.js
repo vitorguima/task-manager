@@ -1,4 +1,4 @@
-const { insertNewProject } = require('../../services/projects/creteProjects');
+const { insertNewProject } = require('../../services/projects/createProjects');
 
 const createProject = async (req, res) => {
   const data = req.body;

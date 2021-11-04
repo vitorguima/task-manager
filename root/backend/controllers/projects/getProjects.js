@@ -2,7 +2,6 @@ const { getProjects } = require('../../services/projects/getProjects');
 
 const getAllProjects = async (req, res) => {
   const { id } = req.user;
-
   const projects = await getProjects(id);
 
   if (projects.message) {
