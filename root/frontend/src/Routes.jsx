@@ -4,14 +4,16 @@ import { Route, Switch } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Register from './pages/Register';
-import TasksFeed from './pages/TasksFeed';
+import ProjectsFeed from './pages/ProjectsFeed';
+import ProjectDetails from './components/ProjectDetails';
 
 function Routes() {
   return (
     <Switch>
       <Route exact path="/" component={ Home } />
       <Route exact path="/register" component={ Register } />
-      <Route exact path="/tasks/:id" component={ TasksFeed } />
+      <Route exact path="/projects/:userId" component={ ProjectsFeed } />
+      <Route exact path="/projects/:userId/:projectId" component={ ProjectDetails }/>
     </Switch>
   );
 }

@@ -6,10 +6,10 @@ import { connect } from 'react-redux';
 
 import LogoutButton from '../components/LogoutButton';
 
-function TasksFeed({ userData }) {
+function ProjectsFeed({ userData }) {
   return (
     <div>
-      { userData.id ? <p>Tasks Feed</p> : <Redirect to="/" /> }
+      { userData.id ? <p>Projects Feed</p> : <Redirect to="/" /> }
       <LogoutButton />
     </div>
   )
@@ -19,4 +19,4 @@ const mapStateToProps = (state) => ({
   userData: state.userData.userData,
 });
 
-export default connect(mapStateToProps, null)(TasksFeed)
+export default connect(mapStateToProps, null)(ProjectsFeed)
