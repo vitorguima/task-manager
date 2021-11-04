@@ -75,7 +75,7 @@ export default function RegisterForm() {
       <button
         onClick={ () => submitRegister(userName, password, firstName, lastName, email) }
       >
-        Login
+        Register
       </button>
     </div>
   )

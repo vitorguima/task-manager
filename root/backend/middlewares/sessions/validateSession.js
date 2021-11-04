@@ -3,7 +3,7 @@ const validateSession = async (req, res, next) => {
     return next();
   }
 
-  return res.status(200).json({ authentication: false });
+  return res.status(403).json({ error: 'Require user authentication.' });
 };
 
 const getUser = (req, res) => {

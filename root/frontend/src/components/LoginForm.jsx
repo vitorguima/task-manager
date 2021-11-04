@@ -1,40 +1,45 @@
 import React, { useState, useEffect } from 'react';
 
+import { connect } from 'react-redux';
+
+import { submitLogin } from '../actions/index';
+
 import { Redirect } from 'react-router';
 
 import axios from 'axios';
 
-const LOGIN_ENDPOINT = 'http://localhost:4000/login'
+const LOGIN_ENDPOINT = 'http://localhost:4000/login';
 
-export default function LoginForm() {
+function LoginForm({ userData, setUserData }) {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
-  const [userData, setUserData] = useState();
   const [redirect, setRedirect] = useState(false);
   const [isloading, setIsLoading] = useState(false);
+  const [error, setError] = useState();
 
   useEffect(() => {
     const isUserAuthenticated = async () => {
       setIsLoading(true);
-    
-      const response = await axios({
-        method: 'GET',
-        withCredentials: true,
-        url: 'http://localhost:4000/user',
-      });
-
-      if (response.data.user) {
-        setUserData(response.data.user);
-        setRedirect(true);
-        setIsLoading(false);
-      }
-
-      if (!response.data.authentication) {
+      try {
+        const response = await axios({
+          method: 'GET',
+          withCredentials: true,
+          url: 'http://localhost:4000/user',
+        });
+  
+        if (response.data.user) {
+          setUserData(response.data.user);
+          setIsLoading(false);
+          setRedirect(true);
+        }
+      } catch (err) {
+        setError(err.response.data);
         setIsLoading(false);
       }
     }
 
     isUserAuthenticated();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const submitLogin = async (userName, password) => {
@@ -89,3 +94,14 @@ export default function LoginForm() {
     </div>
   )
 }
+
+const mapStateToProps = (state) => ({
+  userData: state.userData.userData,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setUserData: (data) => dispatch(submitLogin(data)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
+

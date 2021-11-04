@@ -1,25 +1,22 @@
 import React from 'react';
-import axios from 'axios';
 
-const LOGOUT_ENDPOINT = 'http://localhost:4000/logout';
-const submitLogout = async () => {
-  await axios({
-    method: 'GET',
-    withCredentials: true,
-    url: LOGOUT_ENDPOINT,
-  });
-}
+import { Redirect } from 'react-router';
 
-export default function TasksFeed() {
+import { connect } from 'react-redux';
+
+import LogoutButton from '../components/LogoutButton';
+
+function TasksFeed({ userData }) {
   return (
     <div>
-      <p>Tasks Feed</p>
-      <button
-        type="button"
-        onClick={() => submitLogout()}
-      >
-        Logout
-      </button>
+      { userData.id ? <p>Tasks Feed</p> : <Redirect to="/" /> }
+      <LogoutButton />
     </div>
   )
 }
+
+const mapStateToProps = (state) => ({
+  userData: state.userData.userData,
+});
+
+export default connect(mapStateToProps, null)(TasksFeed)
