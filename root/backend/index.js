@@ -12,7 +12,7 @@ const MongoStore = require('connect-mongo')(session);
 
 const registerRoutes = require('./routes/users/register');
 const authenticationRoutes = require('./routes/users/authentication');
-const projectRoutes = require('./routes/projects')
+const projectRoutes = require('./routes/projects');
 
 const app = express();
 

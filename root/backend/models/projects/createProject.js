@@ -1,6 +1,6 @@
 const connection = require('../../models/connection/mongodb');
 
-const creteProject = async (data) => {
+const createProject = async (data) => {
   try {
     const newProject = await connection()
       .then((db) => db.collection('projects')
@@ -15,5 +15,5 @@ const creteProject = async (data) => {
 }
 
 module.exports = {
-  creteProject,
+  createProject,
 };

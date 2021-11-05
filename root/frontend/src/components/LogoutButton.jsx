@@ -2,6 +2,8 @@ import React from 'react'
 
 import { connect } from 'react-redux';
 
+import { Link } from 'react-router-dom';
+
 import axios from 'axios';
 
 import { submitLogout } from '../actions/index';
@@ -23,7 +25,7 @@ function LogoutButton({ dispatchLogout }) {
   }
 
   return (
-    <div>
+    <Link to="/">
       <button
         type="button"
         name="logout"
@@ -31,7 +33,7 @@ function LogoutButton({ dispatchLogout }) {
       >
         Logout
       </button>
-    </div>
+    </Link>
   )
 }
 
