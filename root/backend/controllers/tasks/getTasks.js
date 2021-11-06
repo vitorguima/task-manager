@@ -1,6 +1,6 @@
 const { getTasks } = require('../../services/tasks/getTasks');
 
-const getAllProjects = async (req, res) => {
+const getAllTasks = async (req, res) => {
   const { projectId } = req.params;
 
   const tasks = await getTasks(projectId);
@@ -13,5 +13,5 @@ const getAllProjects = async (req, res) => {
 }
 
 module.exports = {
-  getAllProjects,
+  getAllTasks,
 }
