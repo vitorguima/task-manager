@@ -1,0 +1,17 @@
+const { getTasks } = require('../../services/tasks/getTasks');
+
+const getAllProjects = async (req, res) => {
+  const { projectId } = req.params;
+
+  const tasks = await getTasks(projectId);
+
+  if (tasks.message) {
+    return res.status(400).json(tasks.message);
+  }
+
+  return res.status(200).json(tasks);
+}
+
+module.exports = {
+  getAllProjects,
+}

@@ -1,11 +1,11 @@
 const connection = require('../../models/connection/mongodb');
 
-const findProjectsByUserId = async (id) => {
+const findTasksByProjectId = async (id) => {
   const idToString = id.toString();
   try {
     const user = await connection()
-      .then((db) => db.collection('projects')
-      .find({ userId: { $eq: idToString } }).toArray());
+      .then((db) => db.collection('tasks')
+      .find({ projectId: { $eq: idToString } }).toArray());
     return user;
   } catch (_err) {
     return {
@@ -15,5 +15,5 @@ const findProjectsByUserId = async (id) => {
 }
 
 module.exports = {
-  findProjectsByUserId,
+  findTasksByProjectId,
 }
