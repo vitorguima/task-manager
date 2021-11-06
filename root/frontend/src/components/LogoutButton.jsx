@@ -2,9 +2,11 @@ import React from 'react'
 
 import { connect } from 'react-redux';
 
+import { Link } from 'react-router-dom';
+
 import axios from 'axios';
 
-import { submitLogout } from '../actions/index';
+import { submitLogout } from '../actions/authentication';
 
 const LOGOUT_ENDPOINT = 'http://localhost:4000/logout';
 
@@ -20,10 +22,10 @@ function LogoutButton({ dispatchLogout }) {
   const executeLogout = async () => {
     await requestLogout();
     dispatchLogout();
-  }
+  };
 
   return (
-    <div>
+    <Link to="/">
       <button
         type="button"
         name="logout"
@@ -31,7 +33,7 @@ function LogoutButton({ dispatchLogout }) {
       >
         Logout
       </button>
-    </div>
+    </Link>
   )
 }
 

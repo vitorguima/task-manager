@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { connect } from 'react-redux';
 
-import { submitLogin } from '../actions/index';
+import { submitLogin } from '../actions/authentication';
 
 import { Redirect } from 'react-router';
 
@@ -88,6 +88,7 @@ function LoginForm({ userData, setUserData }) {
           >
             Login
           </button>
+          { error ? <p>{ error.message }</p> : null }
         </div>
         : <p>Loading...</p>
       }
@@ -104,4 +105,3 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
-
