@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { connect } from 'react-redux';
 
-import { submitLogin } from '../actions/index';
+import { submitLogin } from '../actions/authentication';
 
 import { Redirect } from 'react-router';
 

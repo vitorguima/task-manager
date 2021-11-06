@@ -17,22 +17,26 @@ const POSTS_ENDPOINT = 'http://localhost:4000/projects';
 // each task card will have a button to redirect to TasksOfProject
 // tasksCard will contain the details of a registered task
 
-const renderProjectCards = (projects) => {
-  return (
-    projects.map(({ name, description, _id: id, userId }, index) => 
-    <ProjectCard
-      userId={ userId }
-      id={ id }
-      key={index}
-      name={name} 
-      description={description} 
-    />)
-  )
-}
-
 function ProjectsFeed() {
   const [projects, setProjects] = useState();
   const [error, setError ] = useState();
+  const [removedProjects, setRemovedProjects] = useState(0);
+  const [submitedProjects, setSubmitedProjects] = useState(0);
+
+  const renderProjectCards = (projects) => {
+    return (
+      projects.map(({ name, description, _id: id, userId }, index) => 
+      <ProjectCard
+        userId={ userId }
+        id={ id }
+        key={index}
+        name={name} 
+        description={description}
+        removedProjects={removedProjects}
+        setRemovedProjects={setRemovedProjects}
+      />)
+    )
+  }
 
   useEffect(() => {
     const getProjects = async () => {
@@ -44,7 +48,11 @@ function ProjectsFeed() {
         })
 
         if (response.data.length > 0) {
-          setProjects(response.data)
+          setProjects(response.data);
+        }
+
+        if (!response.data.length) {
+          setProjects();
         }
       } catch (err) {
         setError(err.response.data)
@@ -52,12 +60,15 @@ function ProjectsFeed() {
     };
 
     getProjects();
-  }, []);
+  }, [removedProjects, submitedProjects]);
 
     return (
       <div>
         <LogoutButton />
-        <CreateProject />
+        <CreateProject
+          submitedProjects={submitedProjects}
+          setSubmitedProjects={setSubmitedProjects}
+        />
         { projects ? renderProjectCards(projects) : null}
         { error ? <Redirect to="/" /> : null }
       </div>

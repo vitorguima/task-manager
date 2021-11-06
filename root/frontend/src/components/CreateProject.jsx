@@ -8,23 +8,29 @@ import axios from 'axios';
 
 const CREATE_PROJECT_ENDPOINT = 'http://localhost:4000/projects';
 
-const submitProject = async (name, description, userId) => {
-  console.log(userId);
-  const response = await axios({
-    method: 'POST',
-    data: {
-      name,
-      description,
-      userId,
-    },
-    withCredentials: true,
-    url: `${CREATE_PROJECT_ENDPOINT}`,
-  })
+function CreateProject(props) {
+  const {
+    submitedProjects,
+    setSubmitedProjects,
+  } = props;
 
-  return response;
-}
+  const submitProject = async (name, description, userId) => {
+    const response = await axios({
+      method: 'POST',
+      data: {
+        name,
+        description,
+        userId,
+      },
+      withCredentials: true,
+      url: `${CREATE_PROJECT_ENDPOINT}`,
+    })
 
-function CreateProject() {
+    setSubmitedProjects(submitedProjects + 1);
+  
+    return response;
+  }
+
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   

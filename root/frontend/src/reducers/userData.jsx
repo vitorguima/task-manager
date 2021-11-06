@@ -1,7 +1,7 @@
 import {
   USER_LOGIN,
   USER_LOGOUT,
-} from '../actions/index';
+} from '../actions/authentication';
 
 const INITIAL_STATE = {
   userData: {},
