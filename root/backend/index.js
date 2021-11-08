@@ -13,6 +13,7 @@ const MongoStore = require('connect-mongo')(session);
 const registerRoutes = require('./routes/users/register');
 const authenticationRoutes = require('./routes/users/authentication');
 const projectRoutes = require('./routes/projects');
+const tasksRoutes = require('./routes/tasks');
 
 const app = express();
 
@@ -49,6 +50,7 @@ app.use(passport.session());
 app.use(registerRoutes);
 app.use(authenticationRoutes);
 app.use(projectRoutes);
+app.use(tasksRoutes);
 
 app.listen(4000, () => {
   console.log("Running on PORT 4000.");
