@@ -13,15 +13,12 @@ import { Redirect } from 'react-router-dom';
 
 const POSTS_ENDPOINT = 'http://localhost:4000/projects';
 
-// render the project cards (arrayOfTasks.map())
-// each task card will have a button to redirect to TasksOfProject
-// tasksCard will contain the details of a registered task
-
 function ProjectsFeed() {
   const [projects, setProjects] = useState();
   const [error, setError ] = useState();
   const [removedProjects, setRemovedProjects] = useState(0);
   const [submitedProjects, setSubmitedProjects] = useState(0);
+  const [updatedProjects, setUpdatedProjects] = useState(0);
 
   const renderProjectCards = (projects) => {
     return (
@@ -34,6 +31,8 @@ function ProjectsFeed() {
         description={description}
         removedProjects={removedProjects}
         setRemovedProjects={setRemovedProjects}
+        updatedProjects={updatedProjects}
+        setUpdatedProjects={setUpdatedProjects}
       />)
     )
   }
@@ -60,7 +59,7 @@ function ProjectsFeed() {
     };
 
     getProjects();
-  }, [removedProjects, submitedProjects]);
+  }, [removedProjects, submitedProjects, updatedProjects]);
 
     return (
       <div>
