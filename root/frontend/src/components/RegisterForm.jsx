@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+
+import { Link } from 'react-router-dom';
+
 import axios from 'axios';
 
 const REGISTER_ENDPOINT = 'http://localhost:4000/register'
@@ -15,8 +18,7 @@ const submitRegister = async (userName, password, firstName, lastName, email) =>
     },
     withCredentials: true,
     url: REGISTER_ENDPOINT,
-  })
-  .then((response) => console.log(response));
+  });
 
   return response;
 }
@@ -77,6 +79,13 @@ export default function RegisterForm() {
       >
         Register
       </button>
+      <Link to="/">
+        <button
+          type="button"
+        >
+          Sign in
+        </button>
+      </Link>
     </div>
   )
 }
