@@ -15,6 +15,7 @@ export default function ProjectDetails() {
   const [submitedTasks, setSubmitedTasks] = useState(0);
   const [error, setError ] = useState();
   const [removedTasks, setRemovedTasks] = useState(0);
+  const [updatedTasks, setUpdatedTasks] = useState(0);
 
   const history = useHistory();
   const redirectToPreivous = () => history.goBack();
@@ -33,6 +34,9 @@ export default function ProjectDetails() {
         taskState={taskState}
         removedTasks={removedTasks}
         setRemovedTasks={setRemovedTasks}
+        updatedTasks={updatedTasks}
+        setUpdatedTasks={setUpdatedTasks}
+        projectId={projectId}
       />)
     )
   }
@@ -60,7 +64,7 @@ export default function ProjectDetails() {
 
     getTasks();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [submitedTasks, removedTasks])
+  }, [submitedTasks, removedTasks, updatedTasks])
 
   return (
     <div>

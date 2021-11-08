@@ -28,12 +28,6 @@ export default function ProjectCard(props) {
     setNewDescription(description);
   }
 
-  const finishEdit = async () => {
-    await submitUpdate(id);
-    setIsEditing(false);
-    setUpdatedProjects(updatedProjects + 1);
-  }
-
   const submitUpdate = async (projectId) => {
     await axios({
       method: 'PUT',
@@ -46,6 +40,12 @@ export default function ProjectCard(props) {
       url: `${PROJECT_ENDPOINT}/${projectId}`,
     });
 
+    setIsEditing(false);
+    setUpdatedProjects(updatedProjects + 1);
+  }
+
+  const finishEdit = async () => {
+    await submitUpdate(id);
     setIsEditing(false);
     setUpdatedProjects(updatedProjects + 1);
   }
@@ -103,13 +103,13 @@ export default function ProjectCard(props) {
         />
         <button
           type="button"
-          onClick={ () => submitUpdate(id) }
+          onClick={ () => finishEdit() }
         >
           Save
         </button>
         <button
           type="button"
-          onClick={ () => finishEdit() }
+          onClick={ () => setIsEditing(false) }
         >
           Cancel
         </button>
