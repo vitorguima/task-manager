@@ -22,6 +22,7 @@ function ProjectsFeed() {
   const [error, setError ] = useState();
   const [removedProjects, setRemovedProjects] = useState(0);
   const [submitedProjects, setSubmitedProjects] = useState(0);
+  const [updatedProjects, setUpdatedProjects] = useState(0);
 
   const renderProjectCards = (projects) => {
     return (
@@ -34,6 +35,8 @@ function ProjectsFeed() {
         description={description}
         removedProjects={removedProjects}
         setRemovedProjects={setRemovedProjects}
+        updatedProjects={updatedProjects}
+        setUpdatedProjects={setUpdatedProjects}
       />)
     )
   }
@@ -60,7 +63,7 @@ function ProjectsFeed() {
     };
 
     getProjects();
-  }, [removedProjects, submitedProjects]);
+  }, [removedProjects, submitedProjects, updatedProjects]);
 
     return (
       <div>
