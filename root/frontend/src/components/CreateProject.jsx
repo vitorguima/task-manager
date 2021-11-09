@@ -40,32 +40,39 @@ function CreateProject(props) {
 
   return (
     <div>
-      <form>
+      <form className="flex flex-col flex-wrap lg:flex-row max-w-9xl mx-auto px-4 bg-gray-300 items-center">
+        <div className="flex flex-col flex-wrap lg:flex-row items-center">
         <label>
           Project name
+        </label>
           <input 
             type="text"
             name="name"
             value={ name }
             onChange={ ({ target }) => setName(target.value) }
+            className="m-2"
           />
-        </label>
+        </div>
+        <div className="flex flex-col flex-wrap lg:flex-row items-center">
         <label>
           Project description
+        </label>
           <input 
             type="text"
             name="description"
             value={ description }
             onChange={ ({ target }) => setDescription(target.value) }
+            className="m-2"
           />
-        </label>
-      </form>
-      <button
+        </div>
+        <button
         type="button"
         onClick={ () => submitProject(name, description, currentUserId) }
+        className="m-1 rounded-lg px-3 py-3/4 bg-green-500 text-green-50 shadow hover:shadow-xl duration-300"
       >
         Create
       </button>
+      </form>
     </div>
   )
 }

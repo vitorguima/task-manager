@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
-import { useHistory , useLocation, Redirect } from 'react-router-dom';
+import { useLocation, Redirect } from 'react-router-dom';
 
 import CreateTask from '../components/CreateTask';
 
 import TaskCard from '../components/TaskCard';
 
 import axios from 'axios';
+import Header from '../components/Header';
 
 const GET_TASKS_ENDPOINT = 'http://localhost:4000/tasks';
 
@@ -17,8 +18,6 @@ export default function ProjectDetails() {
   const [removedTasks, setRemovedTasks] = useState(0);
   const [updatedTasks, setUpdatedTasks] = useState(0);
 
-  const history = useHistory();
-  const redirectToPreivous = () => history.goBack();
   const currentLocation = useLocation();
   const currentPath = currentLocation.pathname;
   const projectId = currentPath.split('/')[2];
@@ -68,17 +67,14 @@ export default function ProjectDetails() {
 
   return (
     <div>
-      <p>Project Details</p>
+      <Header />
       <CreateTask
         submitedTasks={ submitedTasks }
         setSubmitedTasks={ setSubmitedTasks }
       />
-      <button
-        onClick={ () => redirectToPreivous() }
-      >
-        Projects
-      </button>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       { tasks ? renderTasksCard(tasks) : null }
+      </div>
       { error ? <Redirect to="/" /> : null }
     </div>
   )

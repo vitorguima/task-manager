@@ -58,41 +58,54 @@ function LoginForm({ userData, setUserData }) {
       setRedirect(true);
     }
   }
-  
-  return (
-    <div>
-      { redirect ? <Redirect to={`/projects/${userData.id}`} /> : null }
-      { !isloading ?
-        <div>
-          <form>
-            <label>
-              User name
+
+  const renderLoginForm = () => {
+    return(
+      <section className="mt-10">
+      <form className="flex flex-col">
+            <div className="mb-6 pt-3 rounded bg-gray-200">
+              <label className="block text-gray-700 text-sm font-bold mb-2 ml-3">
+                User name
+              </label>
               <input type="text" 
                 name="userName"
                 value={ userName }
                 onChange={ ({ target }) => setUserName(target.value) }
+                class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-blue-600 transition duration-500 px-3 pb-3"
               />
-            </label>
-            <label>
-              Password
-              <input type="password" 
+            </div>
+            <div className="mb-6 pt-3 rounded bg-gray-200">
+              <label className="block text-gray-700 text-sm font-bold mb-2 ml-3">
+                Password
+              </label>
+              <input
+                className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-blue-600 transition duration-500 px-3 pb-3"
+                type="password" 
                 name="password"
                 value={ password }
                 onChange={ ({ target }) => setPassword(target.value) }
               />
-            </label>
-          </form>
-          <button
-            onClick={ () => submitLogin(userName, password) }
-            type="button"
-          >
-            Login
-          </button>
-          { error ? <p>{ error.message }</p> : null }
-        </div>
-        : <p>Loading...</p>
-      }
-    </div>
+            </div>
+            <div class="flex justify-end">
+                <p className="text-sm text-blue-600 hover:text-blue-700 hover:underline mb-6">Forgot your password?</p>
+            </div>
+            <button
+              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"
+              onClick={ () => submitLogin(userName, password) }
+              type="button"
+            >
+              Login
+            </button>
+      </form>
+      </section>
+    )
+  }
+  
+  return (
+    <section className="mt-10">
+      { redirect ? <Redirect to={`/projects/${userData.id}`} /> : null }
+      { !isloading ? renderLoginForm( ): <p>Loading...</p> }
+    </section>
   )
 }
 

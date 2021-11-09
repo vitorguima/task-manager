@@ -62,57 +62,85 @@ export default function ProjectCard(props) {
 
   const notEditingProject = () => {
     return (
-      <div>
-        <p>{ name }</p>
-        <p>{ description }</p>
-        <Link to={`/details/${id}`}>
+      <div
+        className="max-w-lg mx-auto p-8 md:p-12 my-10"
+      >
+        <header className="bg-gray-100 rounded-t-lg font-bold text-2xl py-4 px-8">
+          <p>{ name }</p>
+        </header>
+        <div className="py-7 px-8">
+          <p>{ description }</p>
+          <div className="flex space-x-1">
+          <Link to={`/details/${id}`}>
+            <button
+              className="mt-4 rounded-lg px-3 py-1 bg-blue-500 text-blue-50 shadow hover:shadow-xl duration-300"
+            >
+              Details
+            </button>
+          </Link>
           <button
             type="button"
+            onClick={ () => startEdit(true) }
+            className="mt-4 rounded-lg px-3 py-1 bg-blue-500 text-blue-50 shadow hover:shadow-xl duration-300"
           >
-            Details
+            Edit
           </button>
-        </Link>
-        <button
-          type="button"
-          onClick={ () => submitDelete(id) }
-        >
-          Remove
-        </button>
-        <button
-          type="button"
-          onClick={ () => startEdit(true) }
-        >
-          Edit
-        </button>
+          <button
+            type="button"
+            onClick={ () => submitDelete(id) }
+            className="mt-4 rounded-lg px-3 py-1 bg-red-500 text-red-50 shadow hover:shadow-xl duration-300"
+          >
+            Remove
+          </button>
+          </div>
+        </div>
+        <footer class="rounded-b-lg bg-gray-100 text-sm text-gray-500 px-8 py-3 text-right">
+          Last update...
+        </footer>
       </div>
     )
   }
 
   const editingProject = () => {
     return (
-      <div>
-        <input 
-          name="name"
-          value={ newName }
-          onChange={ ({ target }) => setNewName(target.value) }
-        />
-        <input 
-          name="description"
-          value={ newDescription }
-          onChange={ ({ target }) => setNewDescription(target.value) }
-        />
-        <button
+      <div
+        className="max-w-lg mx-auto p-8 md:p-12 my-10"
+      >
+        <header className="bg-gray-100 rounded-t-lg font-bold text-2xl py-4 px-8">
+          <input 
+            name="name"
+            value={ newName }
+            onChange={ ({ target }) => setNewName(target.value) }
+            className="w-5/6"
+          />
+        </header>
+        <div className="py-7 px-8">
+          <input 
+            name="description"
+            value={ newDescription }
+            onChange={ ({ target }) => setNewDescription(target.value) }
+            className="w-5/6"
+          />
+          <div className="flex space-x-1">
+          <button
           type="button"
           onClick={ () => finishEdit() }
-        >
+          className="mt-4 rounded-lg px-3 py-1 bg-green-500 text-green-50 shadow hover:shadow-xl duration-300"
+          >
           Save
         </button>
         <button
           type="button"
           onClick={ () => setIsEditing(false) }
+          className="mt-4 rounded-lg px-3 py-1 bg-red-500 text-red-50 shadow hover:shadow-xl duration-300"
         >
           Cancel
         </button>
+          </div>
+        </div>
+        <footer class="rounded-b-lg bg-gray-100 text-sm text-gray-500 px-8 py-3 text-right">
+          Last update...
+        </footer>
       </div>
     )
   }
