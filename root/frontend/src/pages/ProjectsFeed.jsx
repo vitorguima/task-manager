@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react';
 
 import { connect } from 'react-redux';
 
-import LogoutButton from '../components/LogoutButton';
-
 import CreateProject from '../components/CreateProject';
 import ProjectCard from '../components/ProjectCard';
 
 import axios from 'axios';
 
 import { Redirect } from 'react-router-dom';
+import Header from '../components/Header';
 
 const POSTS_ENDPOINT = 'http://localhost:4000/projects';
 
@@ -62,13 +61,15 @@ function ProjectsFeed() {
   }, [removedProjects, submitedProjects, updatedProjects]);
 
     return (
-      <div>
-        <LogoutButton />
+      <div className="flex-row">
+        <Header />
         <CreateProject
           submitedProjects={submitedProjects}
           setSubmitedProjects={setSubmitedProjects}
         />
-        { projects ? renderProjectCards(projects) : null}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          { projects ? renderProjectCards(projects) : null}
+        </div>
         { error ? <Redirect to="/" /> : null }
       </div>
     )
