@@ -21,6 +21,7 @@ require('dotenv').config();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// set cors to heroku deployment
 app.use(cors({
   origin: process.env.PRODUCTION_APP_URL,
   credentials: true,

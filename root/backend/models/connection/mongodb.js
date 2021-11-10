@@ -7,18 +7,16 @@ const OPTIONS = {
     useUnifiedTopology: true,
 };
 
-const MONGO_DB_URL = process.env.MONGO_DB_URL;
-const DATABASE_NAME = process.env.DATABASE_NAME;
-// const PRODUCTION_DB_URL = process.env.PRODUCTION_DB_URL;
-// const PRODUCTION_DB_NAME = process.env.PRODUCTION_DB_NAME;
+const PRODUCTION_DB_URL = process.env.PRODUCTION_DB_URL;
+const PRODUCTION_DB_NAME = process.env.PRODUCTION_DB_NAME;
 
 let db = null;
 
 const connection = () => (db
     ? Promise.resolve(db)
-    : MongoClient.connect(MONGO_DB_URL, OPTIONS)
+    : MongoClient.connect(PRODUCTION_DB_URL, OPTIONS)
     .then((conn) => {
-    db = conn.db(DATABASE_NAME);
+    db = conn.db(PRODUCTION_DB_NAME);
     return db;
     }));
 
