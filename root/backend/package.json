@@ -4,6 +4,7 @@
   "description": "manage your tasks and keep your producity on track.",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .eslintrc.json .",
     "dev": "nodemon index.js"
