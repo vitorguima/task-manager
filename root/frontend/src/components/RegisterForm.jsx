@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 
-const REGISTER_ENDPOINT = 'http://localhost:4000/register'
+const REGISTER_ENDPOINT = process.env.REACT_APP_REGISTER_ENDPOINT;
 
 const submitRegister = async (userName, password, firstName, lastName, email) => {
   const response = await axios({

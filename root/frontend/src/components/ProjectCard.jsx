@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 
-const PROJECT_ENDPOINT = 'http://localhost:4000/projects';
+const PROJECT_ENDPOINT = process.env.REACT_APP_PROJECT_ENDPOIN;
 
 export default function ProjectCard(props) {
   const [newName, setNewName] = useState('');
@@ -94,7 +94,7 @@ export default function ProjectCard(props) {
           </button>
           </div>
         </div>
-        <footer class="rounded-b-lg bg-gray-100 text-sm text-gray-500 px-8 py-3 text-right">
+        <footer className="rounded-b-lg bg-gray-100 text-sm text-gray-500 px-8 py-3 text-right">
           Last update...
         </footer>
       </div>
@@ -138,7 +138,7 @@ export default function ProjectCard(props) {
         </button>
           </div>
         </div>
-        <footer class="rounded-b-lg bg-gray-100 text-sm text-gray-500 px-8 py-3 text-right">
+        <footer className="rounded-b-lg bg-gray-100 text-sm text-gray-500 px-8 py-3 text-right">
           Last update...
         </footer>
       </div>

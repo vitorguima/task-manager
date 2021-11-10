@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 
 import axios from 'axios';
 
-const CREATE_TASK_ENDPOINT = 'http://localhost:4000/tasks';
+const CREATE_TASK_ENDPOINT = process.env.REACT_APP_CREATE_TASK_ENDPOINT;
 
 function CreateTask(props) {
   const {

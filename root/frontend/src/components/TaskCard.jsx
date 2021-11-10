@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import axios from 'axios';
 
-const TASK_ENDPOINT = 'http://localhost:4000/tasks';
+const TASK_ENDPOINT = process.env.REACT_APP_TASK_ENDPOINT;
 
 export default function TaskCard(props) {
   const [newName, setNewName] = useState('');
@@ -95,7 +95,7 @@ export default function TaskCard(props) {
         </button>
         </div>
         </div>
-        <footer class="rounded-b-lg bg-gray-100 text-sm text-gray-500 px-8 py-3 text-right">
+        <footer className="rounded-b-lg bg-gray-100 text-sm text-gray-500 px-8 py-3 text-right">
           <p>Last update...</p>
         </footer>
       </div>
@@ -146,7 +146,7 @@ export default function TaskCard(props) {
         </button>
         </div>
         </div>
-        <footer class="rounded-b-lg bg-gray-100 text-sm text-gray-500 px-8 py-3 text-right">
+        <footer className="rounded-b-lg bg-gray-100 text-sm text-gray-500 px-8 py-3 text-right">
           <p>Last update...</p>
         </footer>
       </div>

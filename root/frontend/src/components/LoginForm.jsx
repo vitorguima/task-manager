@@ -8,7 +8,8 @@ import { Redirect } from 'react-router';
 
 import axios from 'axios';
 
-const LOGIN_ENDPOINT = 'http://localhost:4000/login';
+const LOGIN_ENDPOINT = process.env.REACT_APP_LOGIN_ENDPOINT;
+const USERS_ENDPOINT = process.env.REACT_APP_USERS_ENDPOINT;
 
 function LoginForm({ userData, setUserData }) {
   const [userName, setUserName] = useState('');
@@ -16,7 +17,7 @@ function LoginForm({ userData, setUserData }) {
   const [redirect, setRedirect] = useState(false);
   const [isloading, setIsLoading] = useState(false);
   const [error, setError] = useState();
-
+  
   useEffect(() => {
     const isUserAuthenticated = async () => {
       setIsLoading(true);
@@ -24,7 +25,7 @@ function LoginForm({ userData, setUserData }) {
         const response = await axios({
           method: 'GET',
           withCredentials: true,
-          url: 'http://localhost:4000/user',
+          url: USERS_ENDPOINT,
         });
   
         if (response.data.user) {
@@ -71,7 +72,7 @@ function LoginForm({ userData, setUserData }) {
                 name="userName"
                 value={ userName }
                 onChange={ ({ target }) => setUserName(target.value) }
-                class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-blue-600 transition duration-500 px-3 pb-3"
+                className="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-blue-600 transition duration-500 px-3 pb-3"
               />
             </div>
             <div className="mb-6 pt-3 rounded bg-gray-200">
@@ -86,7 +87,7 @@ function LoginForm({ userData, setUserData }) {
                 onChange={ ({ target }) => setPassword(target.value) }
               />
             </div>
-            <div class="flex justify-end">
+            <div className="flex justify-end">
                 <p className="text-sm text-blue-600 hover:text-blue-700 hover:underline mb-6">Forgot your password?</p>
             </div>
             <button

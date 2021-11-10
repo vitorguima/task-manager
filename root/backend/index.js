@@ -52,6 +52,4 @@ app.use(authenticationRoutes);
 app.use(projectRoutes);
 app.use(tasksRoutes);
 
-app.listen(4000, () => {
-  console.log("Running on PORT 4000.");
-});
+app.listen(process.env.PORT || 4000);

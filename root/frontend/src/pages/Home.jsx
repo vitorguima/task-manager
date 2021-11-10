@@ -6,7 +6,7 @@ import LoginForm from '../components/LoginForm';
 
 export default function Home() {
   return (
-    <body className="body-bg min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0 bg-colors.cyan-400">
+    <div className="body-bg min-h-screen pt-12 md:pt-20 pb-6 px-2 md:px-0 bg-colors.cyan-400">
       <header className="max-w-lg mx-auto">
         <Link to="/">
             <h1 className="text-4xl font-bold text-center">Task manager</h1>
@@ -29,6 +29,6 @@ export default function Home() {
         <span className="mx-3">•</span>
         <p className="hover:underline">Privacy</p>
     </footer>
-    </body>
+    </div>
   )
 }
