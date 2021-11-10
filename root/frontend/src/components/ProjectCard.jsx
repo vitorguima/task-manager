@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 
-const PROJECT_ENDPOINT = process.env.REACT_APP_PROJECT_ENDPOIN;
+const REACT_APP_ENDPOINT = process.env.REACT_APP_PROJECT_ENDPOIN;
 
 export default function ProjectCard(props) {
   const [newName, setNewName] = useState('');
@@ -37,7 +37,7 @@ export default function ProjectCard(props) {
         userId,
       },
       withCredentials: true,
-      url: `${PROJECT_ENDPOINT}/${projectId}`,
+      url: `${REACT_APP_ENDPOINT}/projects/${projectId}`,
     });
 
     setIsEditing(false);
@@ -54,7 +54,7 @@ export default function ProjectCard(props) {
     await axios({
       method: 'DELETE',
       withCredentials: true,
-      url: `${PROJECT_ENDPOINT}/${projectId}`,
+      url: `${REACT_APP_ENDPOINT}/projects/${projectId}`,
     });
 
     setRemovedProjects(removedProjects + 1);

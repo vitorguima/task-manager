@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 
 import axios from 'axios';
 
-const CREATE_TASK_ENDPOINT = process.env.REACT_APP_CREATE_TASK_ENDPOINT;
+const REACT_APP_ENDPOINT = process.env.REACT_APP_REACT_APP_ENDPOINT;
 
 function CreateTask(props) {
   const {
@@ -31,7 +31,7 @@ function CreateTask(props) {
         projectId,
       },
       withCredentials: true,
-      url: `${CREATE_TASK_ENDPOINT}`,
+      url: `${REACT_APP_ENDPOINT}/tasks`,
     })
 
     setSubmitedTasks(submitedTasks + 1);

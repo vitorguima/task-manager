@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 
 import axios from 'axios';
 
-const CREATE_PROJECT_ENDPOINT = process.env.REACT_APP_CREATE_PROJECT_ENDPOINT;
+const REACT_APP_ENDPOINT = process.env.REACT_APP_ENDPOINT;
 
 function CreateProject(props) {
   const {
@@ -23,7 +23,7 @@ function CreateProject(props) {
         userId,
       },
       withCredentials: true,
-      url: `${CREATE_PROJECT_ENDPOINT}`,
+      url: `${REACT_APP_ENDPOINT}/projects`,
     })
 
     setSubmitedProjects(submitedProjects + 1);

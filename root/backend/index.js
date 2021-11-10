@@ -22,7 +22,7 @@ require('dotenv').config();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
-  origin: process.env.APP_URL,
+  origin: process.env.PRODUCTION_APP_URL,
   credentials: true,
 }));  
 

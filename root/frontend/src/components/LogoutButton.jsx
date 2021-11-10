@@ -8,13 +8,13 @@ import axios from 'axios';
 
 import { submitLogout } from '../actions/authentication';
 
-const LOGOUT_ENDPOINT = process.env.REACT_APP_LOGOUT_ENDPOINT;
+const REACT_APP_ENDPOINT = process.env.REACT_APP_ENDPOINT;
 
 const requestLogout = async () => {
   await axios({
     method: 'GET',
     withCredentials: true,
-    url: LOGOUT_ENDPOINT,
+    url: `${REACT_APP_ENDPOINT}/logout`
   });
 }
 

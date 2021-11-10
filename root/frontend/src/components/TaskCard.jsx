@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import axios from 'axios';
 
-const TASK_ENDPOINT = process.env.REACT_APP_TASK_ENDPOINT;
+const APP_ENDPOINT = process.env.REACT_APP_APP_ENDPOINT;
 
 export default function TaskCard(props) {
   const [newName, setNewName] = useState('');
@@ -39,7 +39,7 @@ export default function TaskCard(props) {
         projectId,
       },
       withCredentials: true,
-      url: `${TASK_ENDPOINT}/${id}`,
+      url: `${APP_ENDPOINT}/tasks/${id}`,
     });
 
     setIsEditing(false);
@@ -50,7 +50,7 @@ export default function TaskCard(props) {
     await axios({
       method: 'DELETE',
       withCredentials: true,
-      url: `${TASK_ENDPOINT}/${id}`,
+      url: `${APP_ENDPOINT}/tasks/${id}`,
     });
 
     setRemovedTasks(removedTasks + 1);

@@ -8,8 +8,7 @@ import { Redirect } from 'react-router';
 
 import axios from 'axios';
 
-const LOGIN_ENDPOINT = process.env.REACT_APP_LOGIN_ENDPOINT;
-const USERS_ENDPOINT = process.env.REACT_APP_USERS_ENDPOINT;
+const REACT_APP_ENDPOINT = process.env.REACT_APP_ENDPOINT;
 
 function LoginForm({ userData, setUserData }) {
   const [userName, setUserName] = useState('');
@@ -25,7 +24,7 @@ function LoginForm({ userData, setUserData }) {
         const response = await axios({
           method: 'GET',
           withCredentials: true,
-          url: USERS_ENDPOINT,
+          url: `${REACT_APP_ENDPOINT}/users`,
         });
   
         if (response.data.user) {
@@ -51,13 +50,15 @@ function LoginForm({ userData, setUserData }) {
         password,
       },
       withCredentials: true,
-      url: LOGIN_ENDPOINT,
+      url: `${REACT_APP_ENDPOINT}/login`,
     })
   
     if (response.data.user) {
       setUserData(response.data.user);
       setRedirect(true);
     }
+
+    console.log(response);
   }
 
   const renderLoginForm = () => {

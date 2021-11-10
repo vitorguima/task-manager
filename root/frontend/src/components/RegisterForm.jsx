@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 
-const REGISTER_ENDPOINT = process.env.REACT_APP_REGISTER_ENDPOINT;
+const REACT_APP_ENDPOINT = process.env.REACT_APP_ENDPOINT;
 
 const submitRegister = async (userName, password, firstName, lastName, email) => {
   const response = await axios({
@@ -17,7 +17,7 @@ const submitRegister = async (userName, password, firstName, lastName, email) =>
       email,
     },
     withCredentials: true,
-    url: REGISTER_ENDPOINT,
+    url: `${REACT_APP_ENDPOINT}/register`,
   });
 
   return response;
